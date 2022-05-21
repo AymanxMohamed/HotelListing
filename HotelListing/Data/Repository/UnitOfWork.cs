@@ -6,19 +6,16 @@ namespace HotelListing.Data.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _context;
-        public IRepository<Country> Countries;
 
-        public IRepository<Hotel> Hotels;
+        private readonly IRepository<Country> _countries;
 
-        public UnitOfWork(DatabaseContext context)
-        {
-            _context = context;
-            Countries = new Repository<Country>(_context);
-            Hotels = new Repository<Hotel>(_context);
-        }
+        private readonly IRepository<Hotel> _hotels;
 
+        public IRepository<Country> Countries => _countries ?? new Repository<Country>(_context);
 
+        public IRepository<Hotel> Hotels => _hotels ?? new Repository<Hotel>(_context);
 
+        public UnitOfWork(DatabaseContext context) => _context = context;
 
         public async Task Save() => await _context.SaveChangesAsync();
 
