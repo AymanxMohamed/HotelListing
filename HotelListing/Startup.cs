@@ -1,3 +1,4 @@
+using HotelListing.Configurations;
 using HotelListing.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,7 @@ namespace HotelListing
                     .AllowAnyMethod()
                 )
             );
+            services.AddAutoMapper(typeof(MapperInitializer));
             services.AddControllers();
         }
 
