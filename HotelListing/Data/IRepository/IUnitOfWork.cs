@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace HotelListing.Data.IRepository
+namespace IList.Data.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {

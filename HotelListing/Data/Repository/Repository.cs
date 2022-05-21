@@ -1,4 +1,4 @@
-﻿using HotelListing.Data.IRepository;
+﻿using IList.Data.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace HotelListing.Data.Repository
+namespace IList.Data.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
@@ -29,7 +29,7 @@ namespace HotelListing.Data.Repository
             IQueryable<T> values = _dbSet;
             if (includes != null)
             {
-                includes.ForEach(includeProperty => values.Include(includeProperty));
+                includes.ForEach(includeProperty => values = values.Include(includeProperty));
             }
             return await values.AsNoTracking().FirstOrDefaultAsync(expression);
         }

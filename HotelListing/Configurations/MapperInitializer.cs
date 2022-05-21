@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using HotelListing.Data;
-using HotelListing.Models;
+using IList.Data;
+using IList.Models;
 
-namespace HotelListing.Configurations
+namespace IList.Configurations
 {
     public class MapperInitializer : Profile
     {

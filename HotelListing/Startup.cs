@@ -1,5 +1,7 @@
-using HotelListing.Configurations;
-using HotelListing.Data;
+using IList.Configurations;
+using IList.Data;
+using IList.Data.IRepository;
+using IList.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace HotelListing
+namespace IList
 {
     public class Startup
     {
@@ -38,7 +40,10 @@ namespace HotelListing
                 )
             );
             services.AddAutoMapper(typeof(MapperInitializer));
-            services.AddControllers();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddControllers().AddNewtonsoftJson(x => 
+                x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace HotelListing.Migrations
+namespace IList.Migrations
 {
     public partial class CratingDatabaseAlongWithCountriesAndHotelTables : Migration
     {

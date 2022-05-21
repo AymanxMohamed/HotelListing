@@ -1,6 +1,6 @@
 using System;
 
-namespace HotelListing
+namespace IList
 {
     public class WeatherForecast
     {

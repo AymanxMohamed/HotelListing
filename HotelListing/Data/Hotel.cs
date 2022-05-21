@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HotelListing.Data
+namespace IList.Data
 {
     public class Hotel
     {

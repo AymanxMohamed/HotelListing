@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace HotelListing.Data.IRepository
+namespace IList.Data.IRepository
 {
     public interface IRepository<T> where T : class
     {

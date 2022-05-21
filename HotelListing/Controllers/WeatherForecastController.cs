@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelListing.Controllers
+namespace IList.Controllers
 {
     [ApiController]
     [Route("[controller]")]

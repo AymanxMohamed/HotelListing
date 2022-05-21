@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HotelListing.Data
+namespace IList.Data
 {
     public class Country
     {
