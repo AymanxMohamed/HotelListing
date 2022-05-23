@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using HotelListing.Data;
+using HotelListing.Models;
 using IList.Data;
 using IList.Models;
 
@@ -12,6 +14,7 @@ namespace IList.Configurations
             CreateMap<Country, CreateCountryDTO>().ReverseMap();
             CreateMap<Hotel, HotelDTO>().ReverseMap();
             CreateMap<Hotel, CreateHotelDTO>().ReverseMap();
+            CreateMap<ApiUser, UserDTO>().ReverseMap();
         }
     }
 }

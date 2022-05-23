@@ -1,3 +1,4 @@
+using HotelListing.Services;
 using IList.Configurations;
 using IList.Data;
 using IList.Data.IRepository;
@@ -32,13 +33,10 @@ namespace IList
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HotelListing", Version = "v1" });
             });
-            services.AddCors(x =>
-                x.AddPolicy("AllowAll", builder =>
-                    builder.AllowAnyHeader()
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                )
-            );
+
+            services.AddAppCors();
+            services.AddAuthentication();
+            services.AddAppIdentity();
             services.AddAutoMapper(typeof(MapperInitializer));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddControllers().AddNewtonsoftJson(x => 

@@ -7,13 +7,17 @@ namespace IList.Data.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _context;
-        private IRepository<Country> _countries;
-        private IRepository<Hotel> _hotels;
+        private readonly IRepository<Country> _countries;
+        private readonly IRepository<Hotel> _hotels;
 
-        public UnitOfWork(DatabaseContext context) => _context = context;
+        public UnitOfWork(DatabaseContext context)
+        {
+            _context = context;
+            _countries = new Repository<Country>(_context);
+            _hotels = new Repository<Hotel>(_context);
+        }
 
-        public IRepository<Country> Countries => _countries ??= new Repository<Country>(_context);
-        public IRepository<Hotel> Hotels => _hotels ??= new Repository<Hotel>(_context);
+        public async Task Save() => await _context.SaveChangesAsync();
 
         public void Dispose()
         {
@@ -21,9 +25,9 @@ namespace IList.Data.Repository
             GC.SuppressFinalize(this);
         }
 
-        public async Task Save()
-        {
-            await _context.SaveChangesAsync();
-        }
+        public IRepository<Country> Countries => _countries;
+
+        public IRepository<Hotel> Hotels => _hotels;
+
     }
 }

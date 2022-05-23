@@ -27,10 +27,10 @@ namespace IList.Data.Repository
         public async Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
         {
             IQueryable<T> values = _dbSet;
+
             if (includes != null)
-            {
                 includes.ForEach(includeProperty => values = values.Include(includeProperty));
-            }
+
             return await values.AsNoTracking().FirstOrDefaultAsync(expression);
         }
 
@@ -45,7 +45,7 @@ namespace IList.Data.Repository
                 values = values.Where(expression);
 
             if (includes != null)
-                includes.ForEach(includeProperty => values.Include(includeProperty));
+                includes.ForEach(includeProperty => values = values.Include(includeProperty));
 
             if (orderBy != null)
                 values = orderBy(values);

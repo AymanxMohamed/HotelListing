@@ -1,10 +1,10 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using IList.Data.IRepository;
 using IList.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -31,7 +31,7 @@ namespace IList.Controllers
         {
             try
             {
-                var countries = await _unitOfWork.Countries.GetAll();
+                var countries = await _unitOfWork.Countries.GetAll(includes: new List<string> { "Hotels" });
                 var results = _mapper.Map<IList<CountryDTO>>(countries);
                 return Ok(results);
             }
